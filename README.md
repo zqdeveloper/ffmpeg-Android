@@ -3,11 +3,17 @@ FFMPEG是特别强大的专门用于处理音视频的开源库。你既可以�
 本文将简要介绍一下FFMPEG库的基本目录结构及其功能，然后详细介绍一下我们在日常工作中，如何使用ffmpeg提供的工具来处理音视频文件。
 # FFMPEG 目录及作用
 **libavcodec**: 提供了一系列编码器的实现。
+
 **libavformat**:实现了流协议，容器格式及基本IO访问。
+
 **libavutil**:包括了hash器，解码器和各类工具函数
+
 **libavfilter**:提供了各种音视频过滤器
+
 **libavdevice**:提供了访问捕获设备和回放设备的接口
+
 **libswresample**:实现了混音和重采样
+
 **libswscale**:实现了色彩转换和缩放功能。
 
 # FFMPEG基本概念
@@ -37,19 +43,33 @@ channel是音频中的概念，称之为声道。在一路音频流中，可以�
   
 ## 基本信息查询命令
 FFMPEG可以使用下面的参数进行基本信息查询。例如,想查询一下现在使用的FFMPEG都支持哪些filter,就可以用ffmpeg-filters来查询。详细参数说明如下:
+
 **-version** 显示版本。
+
 **-formats** 显示可用的格式（包括设备）
+
 **-demuxers** 显示可用的demuxers.
+
 **-muxers** 显示可用的muxers.
+
 **-devices** 显示可用的设备
+
 **-codecs** 显示libavcoder已知的所有编解码器。
+
 **-decoders** 显示可用的解码器
+
 **-encoders** 显示可用的编码器
+
 **-bsfs** 显示可用的比特流filter.
+
 **-protocols** 显示可用的协议
+
 **-filters** 显示可用的采样格式
+
 **-pix_fmts** 显示可用的像素格式
+
 **-layouts** 显示channel名称和标准channel布局。
+
 **-colors** 显示识别的颜色名称
 
 ## 命令基本格式及参数
@@ -63,8 +83,12 @@ ffmepg通过-i选项读取任意数量的输入“文件”（可以是常规文
 
 ### 主要参数
 -f fmt(输入/输出)强制输入或输出文件格式。格式通常是自动检测输入文件，并从输出文件的文件扩展名中猜测出来，所以在大多数情况下这个选项是不需要的。
+
 -i url(输入) 输入文件的网址
+
 -y(全局参数)覆盖输出文件而不询问
+
 -n(全局参数)不要覆盖输出文件，如果指定的输出文件已经存在，请立即退出，
+
 -c[:stream_specifier]codec(输入/输出，每个流)选择一个编码器（当在输出文件之前使用）或解码器（当前文件之前使用时）用于一个或多个流。codec是解码器/编码器的名称或copy(仅输出)以指示该流不被重新编码。如：ffmpeg -i INPUT -map 0 -c:v libx264 -c:a copy OUTPUT
 
