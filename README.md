@@ -36,7 +36,7 @@ channel是音频中的概念，称之为声道。在一路音频流中，可以�
 * 直播相关
 
 除了FFMPEG的基本信息查询命令外，其它命令都桉下图所示的流程处理音视频
-![image.png](https://upload-images.jianshu.io/upload_images/5382839-0f6996e9fc18f159.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![image.png](https://upload-images.jianshu.io/upload_images/5382839-0f6996e9fc18f159.png?imageMogr2/auto-orient/strip|imageView2/2/w/1200/format/webp)
   然后将编码的数据包传送给解码器（除非为数据流选择了流拷贝，请看进一步描述）。解码器产生未压缩的帧（原始视频/PCM音频/...）,可以通过滤波进一步处理（见下一节）。在过滤之后，帧被传送到编码器，编码器并输出编码的数据包，最后，这些传递给复用器，将编码的数据包写入输出文件。
   默认情况下，ffmpeg只包含输入文件中每种类型（视频、音频、字幕）的一个流，并将其添加到每个输出文件中，它根据一下标准挑选每一个的‘最佳’：对于视频，它是具有最高分辨率的流；对于音频：它是具有最多channel的流，对于字幕，是第一个字幕流。在相同类型的几个流相等的情况下，选择具有最低索引的流。
   您可以通过-vn/-an/-sn/-dn选项来禁用某些默认配置。要进行全面的手动控制，请使用-map选项，该选项禁用刚描述的默认值。下面我们就来详细介绍一下这些命令。
